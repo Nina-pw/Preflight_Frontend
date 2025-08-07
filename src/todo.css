@@ -1,0 +1,337 @@
+body {
+  /* font-family: Geneva, Tahoma, Verdana, Verdana, sans-serif; */
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: palatino linotype, book antiqua, palatino, serif;
+  background-color: #fffaf4ff;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-container {
+  padding: 0.5rem;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.todo-header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.todo-header h1 span {
+  font-size: 1.5rem;
+  color: #777;
+}
+
+.todo-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive */
+  gap: 1rem;
+  overflow-y: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.sticky-note {
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1rem;
+  transition: transform 0.2s;
+
+  white-space: pre-wrap;
+  overflow-y: auto;
+  word-break: break-word;
+  margin: 0.5rem 0;
+  padding: 1.5rem;
+}
+
+.sticky-note:hover {
+  transform: scale(1.02);
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.note-date {
+  font-size: 1rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+.note-time {
+  font-size: 1rem;
+  color: #555;
+}
+
+.note-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.todo-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.todo-popup {
+  background: white;
+  padding: 2rem;
+  border-radius: 40px;
+  width: 600px;
+  max-width: 90vw;
+}
+
+.todo-form h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 350;
+  color: #333;
+}
+
+.todo-form {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.5rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.todo-form input[type="text"],
+.todo-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.todo-form textarea {
+  resize: none;
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.todo-form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-button {
+  padding: 0.5rem 1.2rem;
+  background-color: #d4edda; /* เขียวอ่อน */
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+  background-color: #c3e6cb;
+  color: white;
+  border-color: #c3e6cb;
+}
+
+.cancel-button {
+  padding: 0.5rem 1.2rem;
+  background-color: #f8d7da; /* แดงอ่อน */
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.cancel-button:hover {
+  background-color: #f1b0b7;
+  color: white;
+  border-color: #f1b0b7;
+}
+
+.add-button-box {
+  background-color: #e9e9e9ff !important;
+  border: 2px dashed #aaa;
+}
+
+.note-description {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 500px; /* ปรับได้ตามขนาด note */
+  margin: 0.5rem 0;
+}
+
+.note-description p {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  padding-right: 0.5rem;
+}
+
+.user-profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.username {
+  font-weight: 400;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-menu button:hover {
+  background-color: #eee;
+}
+
+.custom-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+
+.custom-checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.custom-checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border: 2px solid #000000ff;
+  border-radius: 50%;
+  color: #000000ff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.custom-checkbox input:checked + .checkmark {
+  background-color: #000000ff;
+  color: white;
+}
+
+.icon-button {
+  background-color: var(--item-color, #ffc6cf);
+  border: none;
+  padding: 0.3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.icon-button.edit:hover {
+  background-color: #8dcbe4ff !important; /* ฟ้าอ่อน */
+}
+
+.icon-button.delete:hover {
+  background-color: #e29090ff !important; /* แดงอ่อน */
+}
+
+.light-text {
+  color: white;
+}
+
+.dark-text {
+  color: black;
+}
+
+.form-error-message {
+  background-color: #ffe0e0;
+  color: #b00020;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ffb3b3;
+}

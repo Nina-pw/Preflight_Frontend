@@ -6,6 +6,7 @@ export interface TodoItem {
   isDone: boolean;
   createdAt: Date;
   updatedAt: Date;
+  color?: string;
 }
 
 export interface UserInfo {

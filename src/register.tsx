@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./register.css"; // เพิ่มไฟล์ CSS
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -35,60 +35,51 @@ const Register = () => {
   };
 
   return (
-    <main className="container">
-      <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <label>
-          First Name
-          <input
-            type="text"
-            placeholder="First Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Last Name
-          <input
-            type="text"
-            placeholder="Last Name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Email
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password (min 6 chars)
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            minLength={6}
-          />
-        </label>
-        <button type="submit">Register</button>
+    <div className="register-container">
+      <form className="register-box" onSubmit={handleRegister}>
+        <h1>Create Account</h1>
+        <p className="subtitle">Start your journey with us</p>
+
+        <input
+          type="text"
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password (min 6 characters)"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          minLength={6}
+        />
+
+        <button type="submit" className="register-btn">Register</button>
+
+        {msg && <p className="success-msg">{msg}</p>}
+        {error && <p className="error-msg">{error}</p>}
+
+        <p className="login-link">
+          Already have an account? <Link to="/login">Login here</Link>
+        </p>
       </form>
-
-      <p>
-        Already have an account? <Link to="/login">Login here</Link>
-      </p>
-
-      {msg && <p style={{ color: "green" }}>{msg}</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </main>
+    </div>
   );
 };
 
